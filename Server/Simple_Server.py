@@ -37,6 +37,7 @@ def start_server():
             traceback.print_exc()
 
     soc.close()
+
 def client_thread(connection, ip, port, max_buffer_size = 5120):
     is_active = True
 
@@ -49,10 +50,21 @@ def client_thread(connection, ip, port, max_buffer_size = 5120):
             print("Connection " + ip + ":" + port + " closed")
             is_active = False
         else:
-            #print(client_input)
-            client_input = ast.literal_eval(client_input)
-            insertToRankingMemory(client_input)
-            connection.sendall("-".encode("utf8"))
+            try:
+                json_length = len(ast.literal_eval(client_input))
+                if  9 == json_length:
+                    pass
+                    # insertToRankingMemory(client_input)
+                    # insertToTotalPriceMemory(client_input)
+                    # connection.sendall("-".encode("utf8"))
+                    # print(client_input)
+                elif 3 == json_length:
+                    print(client_input)
+                else:
+                    print(client_input)
+            except SyntaxError:
+                pass
+
 def receive_input(connection, max_buffer_size):
     client_input = connection.recv(max_buffer_size)
     client_input_size = sys.getsizeof(client_input)
@@ -76,7 +88,7 @@ def ranking_sort(updated_order):
         new_key, new_value = k, v
     top_10_region[k] = v
     a = sorted(list(top_10_region.items()), key=lambda x: x[1], reverse=True)
-    print('d')
+    print('len of list ' + str(len(a)))
     print(a[:10])
     #TODO : IMPORVE SORTING ALGORITHM
     #
@@ -100,11 +112,16 @@ def insertToRankingMemory(data):
         order_created[region] = 1
     ranking_sort({region: order_created[region]})
 
+def insertToTotalPriceMemory(data):
+    global total_created_price
+    price = data['price']
+    total_created_price += price
+    print(price, total_created_price)
 
 client_socket = None
 order_created = {}
 top_10_region = OrderedDict()
-
+total_created_price = 0
 if __name__ == "__main__":
     start_server()
 

@@ -21,11 +21,23 @@ class Delivery:
         self.driver = None
         self.status = DeliveryStatus.ORDER_CREATED
 
+    def get_delivery_info(self):
+        return {"order_id" : self.order_id,
+                 "ship_from_region" : self.ship_from_region,
+                 "ship_to_region" : self.ship_to_region,
+                 "pick_up_time" : self.pick_up_time,
+                 "price" : self.price,
+                 "created_time" : self.created_time,
+                 "assigned_time" : self.assigned_time,
+                 "completed_time" : self.completed_time,
+                 "driver" : self.driver.get_driver_info(),
+                 "status" : self.status }
+
     def update_status(self, status: DeliveryStatus) -> DeliveryStatus:
         self.status = status
         return status
 
-    def update_driver(self, _driver: Driver, assigned_time):
+    def assign_driver(self, _driver: Driver, assigned_time):
         self.driver = _driver
         self.assigned_time = assigned_time
         self.update_status(DeliveryStatus.ORDER_ASSIGNED)

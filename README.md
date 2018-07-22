@@ -38,4 +38,3 @@
 > total amount of price that are in created orders, and that are in completed orders
 > average time completion time (from created to completed), average response time (from created to assigned)
 #### 3. Controlling shards(Split and Merge)
-"# Delivery_Simulation_AWS_Kinesis" 
