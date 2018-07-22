@@ -96,7 +96,6 @@ while True:
         #         #  every time
         client_socket.sendall(str(data).encode("utf8"))
 #        delivery_collection.insert(data)
-
     shard_it = out['NextShardIterator']
     time.sleep(0.09)
 #
