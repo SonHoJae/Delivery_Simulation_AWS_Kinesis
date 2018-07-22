@@ -69,7 +69,7 @@ def client():
 
 client()
 order_created = {}
-
+count =0
 while True:
     out = kinesis.get_records(shard_it)
     # print("shardId : "+kinesis.describe_stream('DeliveryStream')['StreamDescription']['Shards'][shard_id][
@@ -81,8 +81,8 @@ while True:
         except ValueError:
             pass
         #
-        if len(data) <= 3:
-            print(data)
+        print(count)
+        count += 1
         # region = str(data['ship_from_region_x']) + ',' + str(data['ship_from_region_y'])
         # # order_created
         # if data['status'] == 0:

@@ -146,13 +146,19 @@ if __name__ == "__main__":
 
     # Now driver will pick up the order and the delivery will be taken to him
     # Here, Driver class do a role as next Producer of { order_assigned }
-    for idx, _driver in enumerate(drivers):
-        pick_up_delivery(_driver)
-        # try:
-        #     print(idx)
-        #     Thread(target=pick_up_delivery, args=(_driver, )).start()
-        #     time.sleep(1)
-        # except:
-        #     print("Thread did not start.")
-        #     traceback.print_exc()
-    kinesis.put_record('DeliveryStream', "The end", str("The end"))
+    # for idx, _driver in enumerate(drivers):
+    #     pick_up_delivery(_driver)
+    #     # try:
+    #     #     print(idx)
+    #     #     Thread(target=pick_up_delivery, args=(_driver, )).start()
+    #     # except:
+    #     #     print("Thread did not start.")
+    #     #     traceback.print_exc()
+
+    for i in range(20):
+        order_completed = {
+            'order_id': i
+        }
+        print(i)
+        time.sleep(1)
+        kinesis.put_record('DeliveryStream', json.dumps(order_completed), str(i))

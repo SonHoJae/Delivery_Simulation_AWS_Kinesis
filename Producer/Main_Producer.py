@@ -2,7 +2,7 @@ import json
 import random
 import time
 import datetime
-
+import sys
 from Class import Delivery
 from boto import kinesis
 from pymongo import MongoClient
@@ -34,10 +34,10 @@ while True:
         "status" : 0,
         "order_created_time" : str(datetime.datetime.now())
     }
-    print(order_created)
+    # print(order_created)
     kinesis.put_record('DeliveryStream', json.dumps(order_created), str(order_created['price']))
     database_collection.insert(order_created)
     # Delivery(i,"here","there","15:30",datetime.datetime.now())
     #More than 10 orders per second
-    time.sleep(0.5)
+    time.sleep(0.09)
     i+=1
