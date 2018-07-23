@@ -3,7 +3,7 @@ import sys
 import traceback
 import json
 import ast
-from collections import OrderedDict
+from collections import defaultdict
 from threading import Thread
 import datetime
 from pymongo import MongoClient
@@ -43,8 +43,8 @@ def start_server():
         except:
             print("Thread did not start.")
             traceback.print_exc()
-
     soc.close()
+
 def receive_input(connection, max_buffer_size):
     client_input = connection.recv(max_buffer_size)
     client_input_size = sys.getsizeof(client_input)
@@ -79,60 +79,53 @@ def client_thread(connection, ip, port, max_buffer_size = 5120):
                 get_avg_response_time()
             # order_completed
             else: # 1 == len(client_input)
-                print(top_10_region[:10])
+                print_top10_ranking()
                 get_completed_total_price()
                 get_avg_completion_time()
-                print("total created price -> "+ str(total_created_price) + '\n'
-                      +"total completed price ->" + str(total_completed_price))
+                print("Total < Created > price -> $ "+ str(total_created_price) + '\n'
+                      +"Total < Completed > price -> $ " + str(total_completed_price))
 
 
 
 ''' Problem 1 Functions '''
-# Rank from ship_from_region for 10 minutes and previous data go to database
+# Rank from ship_from_region for 10 minutes and previous< completed > price data go to database
 # For tackling streaming data, all the data should be processed on memory
-# MongoDB query runs on memory, but memory architecture is ~~
-def ranking_sort(updated_order):
-    global top_10_region
-    global top_10_region_key
-    global lowest_rank
+# I did just local variable for TOP 10 From regions
 
-    new_key, new_value = None, None
-    for k,v in updated_order.items():
-        dict_region_count[k] = v
-    top_10_region = sorted(list(dict_region_count.items()), key=lambda x: x[1], reverse=True)
-    #TODO : IMPORVE SORTING ALGORITHM
-    #
-    # if len(top_10_region) == 0:
-    #     top_10_region[new_key] = new_value
-    #     top_10_region_key.append(new_key)
-    # else:
-    #     if new_key in top_10_region:
-    #         top_10_region[new_key] = new_value
-    #         top_10_region_key.append(new_key)
-    #     else:
-    #         for key, value in top_10_region.items():
-    #             if value < new_value:
+def print_top10_ranking():
+    print('****************************** TOP 10 From regions ************************************')
+    if len(dict_region_count) < 10:
+        for idx, i in enumerate(range(len(dict_region_count), 0, -1)):
+            if len(dict_region_count[i]) != 0:
+                print('Top ' + str(idx + 1) + ' ' + str(dict_region_count[i]) + ' ' + str(i) + ' counted')
+    else:
+        for idx, i in enumerate(range(len(dict_region_count), len(dict_region_count) - 11, -1)):
+            if len(dict_region_count[i]) != 0:
+                print('Top ' + str(idx + 1) + ' ' + str(dict_region_count[i]) + ' ' + str(i) + ' counted')
+    print('****************************************************************************************')
 
 def order_created_and_get_rank(data):
     global dict_region_count
 
     region = str(data['ship_from_region_x'])+','+str(data['ship_from_region_y'])
-    if region in dict_region_count:
+    if region in order_created:
         order_created[region] += 1
+        dict_region_count[int(order_created[region])].append(region)
+        dict_region_count[int(order_created[region])-1].remove(region)
     else:
         order_created[region] = 1
-    ranking_sort({region: order_created[region]})
+        dict_region_count[int(order_created[region])].append(region)
 
 ''' Problem 2 Functions '''
 def get_created_total_price(data):
     global total_created_price
     price = data['price']
     total_created_price += price
-    # print("created price " + str(total_created_price))
 
 def get_completed_total_price():
     global total_completed_price
     cursor = delivery_collection.find({'status':2})
+    total_completed_price = 0
     for document in list(cursor):
         total_completed_price += document['price']
 
@@ -147,9 +140,11 @@ def get_avg_completion_time():
                            - datetime.datetime.strptime(document['order_created_time'],"%Y-%m-%d %H:%M:%S.%f")
         total += dt_complete_time.total_seconds()
     try:
-        print('Average completion time -> '+ str(total/count))
+        print('Average < Completion > time -> '+ str(total/count) + ' seconds')
     except ZeroDivisionError:
         print('No completion data')
+    except Exception as e:
+        print(e)
 
 def get_avg_response_time():
     cursor = delivery_collection.find({"order_assigned_time": {"$exists": True}})
@@ -161,24 +156,26 @@ def get_avg_response_time():
                            - datetime.datetime.strptime(document['order_created_time'],"%Y-%m-%d %H:%M:%S.%f")
         total += dt_response_time.total_seconds()
     try:
-        print('Average response time -> ' + str(total / count))
+        print('Average < Response > time -> ' + str(total / count) + ' seconds')
     except ZeroDivisionError:
         print('No response data')
+    except Exception as e:
+        print(e)
 
 delivery_collection = database_collection()
 delivery_collection.drop()
 client_socket = None
 
 order_created = {}
+dict_region_count = defaultdict(list)
 top_10_region = []
-dict_region_count = OrderedDict()
 total_created_price = 0
 total_completed_price = 0
 
-# TODO 1. Optimize algorithm on memory
-# TODO 2. Reflect driver's current location
-# TODO 3. Consider pickup time constraint
-# TODO 4. Documentation
+# TODO 1. Optimize algorithm on memory (o)
+# TODO 2. Reflect driver's current location (o)
+# TODO 3. Consider pickup time constraint (o)
+# TODO 4. Documentation (o)
 
 if __name__ == "__main__":
     start_server()

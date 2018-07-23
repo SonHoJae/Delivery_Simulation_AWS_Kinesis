@@ -4,7 +4,7 @@ from Class import Delivery
 class Driver:
     def __init__(self, name):
         self.name = name
-        self.current_region = [random.randint(0,26),random.randint(0,26)]
+        self.current_region = [random.randint(0,31),random.randint(0,31)]
         self.delivery = None
         self.credit = 0
 

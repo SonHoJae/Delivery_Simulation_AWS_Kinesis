@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16f7edd8-3aad-439c-8dc4-4efe89ce14c0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ranking-test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Class/Driver.py" afterPath="$PROJECT_DIR$/Class/Driver.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Consumer/Consumer.py" afterPath="$PROJECT_DIR$/Consumer/Consumer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Producer/Driver_Producer.py" afterPath="$PROJECT_DIR$/Producer/Driver_Producer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Producer/Main_Producer.py" afterPath="$PROJECT_DIR$/Producer/Main_Producer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Simple_Server.py" afterPath="$PROJECT_DIR$/Server/Simple_Server.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,22 +26,12 @@
       <file leaf-file-name="Driver_Producer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Producer/Driver_Producer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="83" column="51" lean-forward="false" selection-start-line="83" selection-start-column="38" selection-end-line="83" selection-end-column="51" />
+            <state relative-caret-position="229">
+              <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
-                <element signature="e#779#905#0" expanded="false" />
+                <element signature="e#566#735#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1083">
-              <caret line="57" column="78" lean-forward="false" selection-start-line="57" selection-start-column="78" selection-end-line="57" selection-end-column="78" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -44,8 +39,8 @@
       <file leaf-file-name="Driver.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Class/Driver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="95">
+              <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -54,8 +49,8 @@
       <file leaf-file-name="Main_Producer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Producer/Main_Producer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+            <state relative-caret-position="337">
+              <caret line="42" column="111" lean-forward="false" selection-start-line="42" selection-start-column="111" selection-end-line="42" selection-end-column="111" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -66,7 +61,7 @@
       <file leaf-file-name="Delivery.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Class/Delivery.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
+            <state relative-caret-position="171">
               <caret line="9" column="15" lean-forward="false" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -78,8 +73,8 @@
       <file leaf-file-name="Consumer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Consumer/Consumer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+            <state relative-caret-position="403">
+              <caret line="89" column="19" lean-forward="false" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -87,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="drop_database.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/drop_database.py">
+      <file leaf-file-name="ranking-test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ranking-test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+            <state relative-caret-position="76">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="16" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -100,12 +95,31 @@
       <file leaf-file-name="Simple_Server.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/Simple_Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="85" column="56" lean-forward="false" selection-start-line="85" selection-start-column="56" selection-end-line="85" selection-end-column="56" />
+            <state relative-caret-position="418">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#405#1398#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_collections.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1027146940/_collections.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="threading.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/threading.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="863" column="0" lean-forward="false" selection-start-line="863" selection-start-column="0" selection-end-line="863" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -121,36 +135,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>delta</find>
-      <find>str</find>
-      <find>comple</find>
-      <find>syn</find>
-      <find>8553</find>
-      <find>completed</find>
-      <find>datetime</find>
-      <find>print</find>
-      <find>finish</find>
-      <find>previous</find>
-      <find>==</find>
-      <find>finished</find>
-      <find>rest</find>
-      <find>regions filtered due to</find>
-      <find>e rest and looking</find>
-      <find>yo</find>
-      <find>ass</find>
-      <find>avg_response</find>
-      <find>sleep</find>
-      <find>driver0</find>
-      <find>end=</find>
-      <find>driver0</find>
-      <find>complet</find>
-      <find>in</find>
-      <find>driver4</find>
-      <find>16:29:25.21061</find>
-      <find>total_seconds</find>
-      <find>a[</find>
-      <find>top_10_region_key</find>
       <find>top_10_region</find>
+      <find>get_avg_response_time</find>
+      <find>577</find>
+      <find>534</find>
+      <find>unreachable locations within pick-up time</find>
+      <find>Average response tim</find>
+      <find>Average respon</find>
+      <find>region</find>
+      <find>16,2': 2</find>
+      <find>16,2</find>
+      <find>'5,9'</find>
+      <find>'18,12': 3</find>
+      <find>'18,9'</find>
+      <find>: 2</find>
+      <find>'5,3</find>
+      <find>0,1</find>
+      <find>[</find>
+      <find>ranking_</find>
+      <find>insert</find>
+      <find>print</find>
+      <find>again</find>
+      <find>ed due to unreachable</find>
+      <find>. taking rest</find>
+      <find>top</find>
+      <find>completion</find>
+      <find>TAKING RES</find>
+      <find>ated pri</find>
+      <find>&lt; completed &gt; price</find>
+      <find>total_seconds</find>
+      <find>hey</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,13 +176,14 @@
         <option value="$PROJECT_DIR$/ShardSplitter.py" />
         <option value="$PROJECT_DIR$/Consumer/Customer_Batch.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/Consumer/Consumer.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/boto/kinesis/layer1.py" />
         <option value="$PROJECT_DIR$/Consumer/Customer_Batch.bat" />
         <option value="$PROJECT_DIR$/drop_database.py" />
         <option value="$PROJECT_DIR$/Class/Delivery.py" />
-        <option value="$PROJECT_DIR$/Producer/Main_Producer.py" />
+        <option value="$PROJECT_DIR$/ranking-test.py" />
+        <option value="$PROJECT_DIR$/Consumer/Consumer.py" />
         <option value="$PROJECT_DIR$/Class/Driver.py" />
+        <option value="$PROJECT_DIR$/Producer/Main_Producer.py" />
         <option value="$PROJECT_DIR$/Producer/Driver_Producer.py" />
         <option value="$PROJECT_DIR$/Server/Simple_Server.py" />
       </list>
@@ -345,19 +360,19 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Consumer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="ranking-test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Consumer" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Delivery_Simulation_AWS_Kinesis2" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Consumer/Consumer.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ranking-test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -501,15 +516,15 @@
       <item index="1" class="java.lang.String" itemvalue="Python.Driver_Producer" />
       <item index="2" class="java.lang.String" itemvalue="Python.drop_database" />
       <item index="3" class="java.lang.String" itemvalue="Python.Simple_Server" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Consumer" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ranking-test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Simple_Server" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Main_Producer" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Driver_Producer" />
-        <item index="3" class="java.lang.String" itemvalue="Python.drop_database" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Consumer" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Driver_Producer" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Simple_Server" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Main_Producer" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ranking-test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.drop_database" />
       </list>
     </recent_temporary>
   </component>
@@ -537,16 +552,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16859852" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31310943" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3488624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3206934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3206934" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -584,10 +599,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Consumer/Consumer.py</url>
-          <line>97</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Producer/Main_Producer.py</url>
           <line>18</line>
           <option name="timeStamp" value="2" />
@@ -609,7 +620,7 @@
           <caret line="148" column="40" lean-forward="false" selection-start-line="148" selection-start-column="20" selection-end-line="148" selection-end-column="40" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#779#905#0" expanded="false" />
+            <element signature="e#566#735#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -674,7 +685,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#405#1398#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,7 +695,7 @@
           <caret line="122" column="102" lean-forward="false" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="102" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#779#905#0" expanded="false" />
+            <element signature="e#566#735#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -757,7 +767,6 @@
           <caret line="72" column="57" lean-forward="false" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#405#1398#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -766,13 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="356" column="0" lean-forward="false" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="915" column="0" lean-forward="false" selection-start-line="915" selection-start-column="0" selection-end-line="915" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -788,6 +790,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="209" column="17" lean-forward="false" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -795,6 +798,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
           <caret line="39" column="15" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -816,6 +820,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="312" column="8" lean-forward="false" selection-start-line="312" selection-start-column="8" selection-end-line="312" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -823,6 +828,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-32">
           <caret line="1633" column="8" lean-forward="false" selection-start-line="1633" selection-start-column="8" selection-end-line="1633" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -830,13 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Consumer/Customer_Batch.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -858,6 +857,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1027146940/_socket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="565" column="78" lean-forward="true" selection-start-line="565" selection-start-column="78" selection-end-line="565" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Consumer/Customer_Batch.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/drop_database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -866,48 +881,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Producer/Main_Producer.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/collections/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Producer/Driver_Producer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="83" column="51" lean-forward="false" selection-start-line="83" selection-start-column="38" selection-end-line="83" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#779#905#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Consumer/Consumer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Class/Driver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="-2944">
+          <caret line="85" column="8" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Class/Delivery.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
+        <state relative-caret-position="171">
           <caret line="9" column="15" lean-forward="false" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
@@ -915,13 +899,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="863" column="0" lean-forward="false" selection-start-line="863" selection-start-column="0" selection-end-line="863" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1027146940/_collections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1027146940/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="2939" column="8" lean-forward="false" selection-start-line="2939" selection-start-column="8" selection-end-line="2939" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Consumer/Consumer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="89" column="19" lean-forward="false" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ranking-test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Producer/Main_Producer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="42" column="111" lean-forward="false" selection-start-line="42" selection-start-column="111" selection-end-line="42" selection-end-column="111" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Class/Driver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Producer/Driver_Producer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="30" column="45" lean-forward="false" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#566#735#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Server/Simple_Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="85" column="56" lean-forward="false" selection-start-line="85" selection-start-column="56" selection-end-line="85" selection-end-column="56" />
+        <state relative-caret-position="418">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#405#1398#0" expanded="false" />
           </folding>
         </state>
       </provider>

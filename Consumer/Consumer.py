@@ -77,29 +77,14 @@ while True:
 
     if len(out['Records']) > 0:
         try :
-            data = json.loads(out['Records'][0]['Data'])
+            data = out['Records'][0]['Data']
+            print(count, data)
         except ValueError:
             pass
-        #
-        print(count)
+
         count += 1
-        # region = str(data['ship_from_region_x']) + ',' + str(data['ship_from_region_y'])
-        # # order_created
-        # if data['status'] == 0:
-        #     if region in order_created:
-        #         order_created[region] += 1
-        #     else:
-        #         order_created[region] = 1
-        #     # {region: order_created[region]}
-        #     if order_created[region] > lowest_rank or len(top_10_region) < 10:
-        #         # TODO MongoDB or Socket? -> Socket : if I use mongodb, the sort algorthm and stuff should be queried
-        #         #  every time
+        # TODO MongoDB or Socket? -> Socket : if I use mongodb, the sort algorthm and stuff should be queried
+        #  every time
         client_socket.sendall(str(data).encode("utf8"))
-#        delivery_collection.insert(data)
     shard_it = out['NextShardIterator']
     time.sleep(0.09)
-#
-# print(db.collection_names())
-# cursor = delivery_collection.find({})
-# for document in cursor:
-#     print(document)
