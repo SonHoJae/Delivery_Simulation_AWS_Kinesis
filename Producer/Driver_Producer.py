@@ -47,7 +47,7 @@ def searching_a_delivery(driver):
     i = 0
     while len(documents) == 0:
         print('Hey, '+driver.get_driver_info()+ ' in ( '+str(driver.getX())+','+str(driver.getY())
-              + ' ) faild to find good orders.. driver is taking some rest and search it again')
+              + ' ) faild to find a good order.. Driver is taking some rest and searching it again')
         time.sleep(5)
         cursor = delivery_collection.find(
             {"$and":
@@ -60,10 +60,9 @@ def searching_a_delivery(driver):
 
         documents = list(cursor)
     current_order_options = []
-    #
+
     # # filter pickup time - distance < 0
     # pickup - datetime.datetime.now() -
-
     for order_created in documents:
         current_order_options.append(order_created)
     available_orders_after_location = sorted(current_order_options, key=lambda order: order['price'], reverse=True)
@@ -77,13 +76,12 @@ def searching_a_delivery(driver):
                         - datetime.datetime.now() + datetime.timedelta(0,3) # 3 is spare time
         delivery_time = current_to_source + delivery_distance
         estimate_time = estimate_time.total_seconds()
-        # print('delivery time -> '+str(delivery_time))
-        # print('left time ->' + str(estimate_time))
         if delivery_time < estimate_time:
             return True
         return False
 
     available_orders_after_distance = list(filter(filter_unreachable_region, available_orders_after_location))
+
     if len(available_orders_after_location)-len(available_orders_after_distance) > 0:
         print('\n\n'+str(len(available_orders_after_location)-len(available_orders_after_distance))
               +' regions filtered due to unreachable locations within pick-up time')
@@ -98,11 +96,9 @@ def searching_a_delivery(driver):
     else:
         preference_order = None
 
-
-
     return preference_order
 
-# TODO If the status is updated to "ASSIGNED : 1", the driver should look up another possible delivery
+# TODO If the status is updated to "ASSIGNED : 1" or "2", the driver should look up another possible delivery
 def pick_up_delivery(driver):
     preference_order = searching_a_delivery(driver)
     if preference_order != None:
@@ -113,7 +109,6 @@ def pick_up_delivery(driver):
 
         # If the status is updated to "ASSIGNED : 1", or "2" the driver should look up another possible delivery
         # Driver will take the order if availabe
-
         delivery = Delivery.Delivery(
                                           preference_order['order_id'],
                                          [preference_order['ship_from_region_x'], preference_order['ship_from_region_y']],
@@ -135,13 +130,11 @@ def pick_up_delivery(driver):
         print('assigned '+ driver.get_driver_info()+' '+str(datetime.datetime.now()))
 
         driver.pick_order(delivery)
-        # Release !
 
         if order_assigned != None:
             print(order_assigned['driver']+' order assgined')
 
             # Lock query and update
-
             kinesis.put_record('DeliveryStream', json.dumps(order_assigned), str(order_assigned['order_id']),explicit_hash_key=next(cycle_partition_key))
 
             do_deliver(driver)

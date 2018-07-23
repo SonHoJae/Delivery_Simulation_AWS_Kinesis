@@ -1,6 +1,5 @@
 from Class import Driver
 from enum import Enum
-import numpy as np
 
 class DeliveryStatus(Enum):
     ORDER_CREATED = 0

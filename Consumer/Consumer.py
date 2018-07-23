@@ -1,12 +1,10 @@
 from boto import kinesis
 from pymongo import MongoClient
-import json
 import time
 import socket
 import sys
-from collections import OrderedDict
-# Database setup
 
+# Database setup
 client = MongoClient()
 db = client.delivery_database
 delivery_collection = db.delivery_collection
@@ -15,6 +13,7 @@ delivery_collection = db.delivery_collection
 kinesis = kinesis.connect_to_region('ap-northeast-1')
 shard_id = sys.argv[1]
 print(shard_id)
+
 # stream info
 print('shard_number' +str(shard_id))
 print(kinesis.describe_stream('DeliveryStream'))
@@ -22,35 +21,7 @@ shard_it = kinesis.get_shard_iterator(kinesis.list_streams()['StreamNames'][0], 
                                       kinesis.describe_stream('DeliveryStream')['StreamDescription']['Shards'][
                                           int(shard_id)][
                                           'ShardId'], # shard_id
-                                      'LATEST')['ShardIterator'] # shard_iterator_type]
-print(shard_it)
-top_10_region = OrderedDict()
-top_10_region_key = []
-lowest_rank = -1
-
-def ranking_sort(updated_order):
-    global top_10_region
-    global top_10_region_key
-    global lowest_rank
-
-    new_key, new_value = None, None
-    for k,v in updated_order.items():
-        new_key, new_value = k, v
-    top_10_region[k] = v
-    a = sorted(list(top_10_region.items()), key=lambda x: x[1], reverse=True)
-    print(a[:10])
-    #TODO : IMPORVE SORTING ALGORITHM
-    #
-    # if len(top_10_region) == 0:
-    #     top_10_region[new_key] = new_value
-    #     top_10_region_key.append(new_key)
-    # else:
-    #     if new_key in top_10_region:
-    #         top_10_region[new_key] = new_value
-    #         top_10_region_key.append(new_key)
-    #     else:
-    #         for key, value in top_10_region.items():
-    #             if value < new_value:
+                                      'LATEST')['ShardIterator']
 
 client_socket = None
 def client():
@@ -69,11 +40,9 @@ def client():
 
 client()
 order_created = {}
-count =0
+count = 0
 while True:
     out = kinesis.get_records(shard_it)
-    # print("shardId : "+kinesis.describe_stream('DeliveryStream')['StreamDescription']['Shards'][shard_id][
-    #                                       'ShardId'],end=" ")
 
     if len(out['Records']) > 0:
         try :
@@ -83,8 +52,8 @@ while True:
             pass
 
         count += 1
-        # TODO MongoDB or Socket? -> Socket : if I use mongodb, the sort algorthm and stuff should be queried
         #  every time
         client_socket.sendall(str(data).encode("utf8"))
+
     shard_it = out['NextShardIterator']
     time.sleep(0.09)

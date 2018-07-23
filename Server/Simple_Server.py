@@ -1,7 +1,6 @@
 import socket
 import sys
 import traceback
-import json
 import ast
 from collections import defaultdict
 from threading import Thread
@@ -99,7 +98,7 @@ def print_top10_ranking():
             if len(dict_region_count[i]) != 0:
                 print('Top ' + str(idx + 1) + ' ' + str(dict_region_count[i]) + ' ' + str(i) + ' counted')
     else:
-        for idx, i in enumerate(range(len(dict_region_count), len(dict_region_count) - 11, -1)):
+        for idx, i in enumerate(range(len(dict_region_count), len(dict_region_count) - 10, -1)):
             if len(dict_region_count[i]) != 0:
                 print('Top ' + str(idx + 1) + ' ' + str(dict_region_count[i]) + ' ' + str(i) + ' counted')
     print('****************************************************************************************')
