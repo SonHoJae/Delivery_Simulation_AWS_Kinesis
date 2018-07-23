@@ -12,9 +12,9 @@
 > ###### PUT records to stream
 #### Streams
 > ##### Shards : Indentified sequence of data records(1 Shard upto 5 transactions/sec(Read), 2MB/sec(Read) 1,000 records per second(Write), 1MB/sec(Write))
->> ##### Data records
->>> ##### Sequence number : data record identifier
->>> ##### Partition key : determine which shard is going to be used
+> ##### Data records
+> ##### Sequence number : data record identifier
+> ##### Partition key : determine which shard is going to be used
 
 #### Retention Period
 #### Consumer
