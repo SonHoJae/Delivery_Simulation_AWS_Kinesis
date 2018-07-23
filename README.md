@@ -6,7 +6,7 @@
 
 <hr/>
 
-![Alt text](https://docs.aws.amazon.com/streams/latest/dev/images/architecture.png "Kinesis Architecture")
+![Kinesis Architecture](https://docs.aws.amazon.com/streams/latest/dev/images/architecture.png "Kinesis Architecture")
 
 #### Producer
 > ###### PUT records to stream
@@ -25,7 +25,7 @@
 
 ## Delivery_Simulation
 ### Kinesis
-![Alt text](https://i.imgur.com/wiMuZTF.jpg "Overview")
+![Overview](https://i.imgur.com/wiMuZTF.jpg "Overview")
 
 #### 0. Instructions
 > 1. Install [bogo](http://boto.cloudhackers.com/en/latest/ref/kinesis.html) & [aws cli](https://aws.amazon.com/ko/cli/)
@@ -40,7 +40,7 @@
 #### 2. Producer
 > Event is randomly generated
 > Main_Producer.py -> order_created event generated
-![Alt text](https://imgur.com/o9mrwOc "Driver_Producer")
+![Driver_Producer](https://imgur.com/HPJ0V0W "Driver_Producer")
 > Driver_Producer.py -> there are 10 threads(drivers) is finding orders. if an order doesn't satisfy driver's
 condition, the driver is going to take a rest and search it again. Once the order is assigned to a driver,
 order_assigned event will be generated. after completing order, order_completed event is generated and update
