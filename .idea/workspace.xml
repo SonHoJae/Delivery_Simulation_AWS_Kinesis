@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="16f7edd8-3aad-439c-8dc4-4efe89ce14c0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Class/Delivery.py" afterPath="$PROJECT_DIR$/Class/Delivery.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Consumer/Customer_Batch.bat" afterPath="$PROJECT_DIR$/Consumer/Customer_Batch.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Class/Driver.py" afterPath="$PROJECT_DIR$/Class/Driver.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Producer/Driver_Producer.py" afterPath="$PROJECT_DIR$/Producer/Driver_Producer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Producer/Main_Producer.py" afterPath="$PROJECT_DIR$/Producer/Main_Producer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Simple_Server.py" afterPath="$PROJECT_DIR$/Server/Simple_Server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/drop_database.py" afterPath="$PROJECT_DIR$/drop_database.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,12 +25,11 @@
       <file leaf-file-name="Driver_Producer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Producer/Driver_Producer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2660">
-              <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+            <state relative-caret-position="245">
+              <caret line="133" column="120" lean-forward="false" selection-start-line="133" selection-start-column="120" selection-end-line="133" selection-end-column="120" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
                 <element signature="e#793#919#0" expanded="false" />
-                <element signature="e#1020#1827#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -38,8 +38,18 @@
       <file leaf-file-name="Driver.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Class/Driver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state relative-caret-position="451">
+              <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Customer_Batch.bat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Consumer/Customer_Batch.bat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -58,8 +68,8 @@
       <file leaf-file-name="Main_Producer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Producer/Main_Producer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+            <state relative-caret-position="707">
+              <caret line="48" column="45" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="48" selection-end-column="45" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -67,22 +77,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Customer_Batch.bat" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Consumer/Customer_Batch.bat">
+      <file leaf-file-name="Delivery.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Class/Delivery.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="204">
+              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Delivery.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Class/Delivery.py">
+      <file leaf-file-name="Consumer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Consumer/Consumer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="39" column="43" lean-forward="false" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-              <folding />
+            <state relative-caret-position="475">
+              <caret line="25" column="15" lean-forward="true" selection-start-line="24" selection-start-column="87" selection-end-line="25" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,19 +105,19 @@
         <entry file="file://$PROJECT_DIR$/drop_database.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="26" />
+              <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Consumer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Consumer/Consumer.py">
+      <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sample/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="869">
-              <caret line="96" column="23" lean-forward="false" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
+            <state relative-caret-position="1292">
+              <caret line="77" column="10" lean-forward="true" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
               <folding>
-                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,21 +126,11 @@
       <file leaf-file-name="Simple_Server.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/Simple_Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="168" column="48" lean-forward="true" selection-start-line="168" selection-start-column="48" selection-end-line="168" selection-end-column="48" />
+            <state relative-caret-position="-209">
+              <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SSL.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/OpenSSL/SSL.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-32">
-              <caret line="1633" column="8" lean-forward="false" selection-start-line="1633" selection-start-column="8" selection-end-line="1633" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -159,11 +163,14 @@
       <find>worst</find>
       <find>insertToRankingMemory</find>
       <find>test</find>
-      <find>print</find>
       <find>document</find>
-      <find>put_record</find>
-      <find>ast</find>
       <find>completed</find>
+      <find>put_record</find>
+      <find>print</find>
+      <find>location</find>
+      <find>6</find>
+      <find>ast</find>
+      <find>distance</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,17 +179,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Class/Driver.py" />
         <option value="$PROJECT_DIR$/ShardSplitter.py" />
         <option value="$PROJECT_DIR$/Consumer/Customer_Batch.py" />
-        <option value="$PROJECT_DIR$/drop_database.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Consumer/Consumer.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/boto/kinesis/layer1.py" />
-        <option value="$PROJECT_DIR$/Class/Delivery.py" />
         <option value="$PROJECT_DIR$/Consumer/Customer_Batch.bat" />
-        <option value="$PROJECT_DIR$/Producer/Main_Producer.py" />
+        <option value="$PROJECT_DIR$/drop_database.py" />
         <option value="$PROJECT_DIR$/Server/Simple_Server.py" />
+        <option value="$PROJECT_DIR$/Class/Delivery.py" />
+        <option value="$PROJECT_DIR$/Producer/Main_Producer.py" />
+        <option value="$PROJECT_DIR$/Class/Driver.py" />
         <option value="$PROJECT_DIR$/Producer/Driver_Producer.py" />
       </list>
     </option>
@@ -519,8 +526,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.Driver_Producer" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Simple_Server" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Main_Producer" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Main_Producer" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Simple_Server" />
         <item index="3" class="java.lang.String" itemvalue="Python.drop_database" />
         <item index="4" class="java.lang.String" itemvalue="Python.Consumer" />
       </list>
@@ -550,13 +557,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25131717" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16859852" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3206934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -602,7 +609,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Producer/Main_Producer.py</url>
-          <line>19</line>
+          <line>18</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -618,7 +625,6 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#793#919#0" expanded="false" />
-            <element signature="e#1020#1827#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -717,21 +723,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Consumer/Customer_Batch.py" />
-    <entry file="file://$PROJECT_DIR$/Sample/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="77" column="10" lean-forward="true" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sample/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1027146940/sys.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -797,11 +788,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drop_database.py">
+    <entry file="file://$PROJECT_DIR$/Sample/client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="26" />
+        <state relative-caret-position="247">
+          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sample/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="77" column="10" lean-forward="true" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -809,6 +810,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drop_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -821,60 +830,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Consumer/Consumer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="15" lean-forward="true" selection-start-line="24" selection-start-column="87" selection-end-line="25" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Producer/Main_Producer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        <state relative-caret-position="707">
+          <caret line="48" column="45" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="48" selection-end-column="45" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Class/Delivery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Server/Simple_Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="168" column="48" lean-forward="true" selection-start-line="168" selection-start-column="48" selection-end-line="168" selection-end-column="48" />
+        <state relative-caret-position="-209">
+          <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Class/Delivery.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="39" column="43" lean-forward="false" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Class/Driver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="451">
+          <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Consumer/Consumer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="869">
-          <caret line="96" column="23" lean-forward="false" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Producer/Driver_Producer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2660">
-          <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+        <state relative-caret-position="245">
+          <caret line="133" column="120" lean-forward="false" selection-start-line="133" selection-start-column="120" selection-end-line="133" selection-end-column="120" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#793#919#0" expanded="false" />
-            <element signature="e#1020#1827#0" expanded="false" />
           </folding>
         </state>
       </provider>

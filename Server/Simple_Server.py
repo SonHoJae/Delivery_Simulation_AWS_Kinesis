@@ -71,7 +71,7 @@ def client_thread(connection, ip, port, max_buffer_size = 5120):
                     print(client_input)
                 # order_completed
                 else:
-                    get_completed_total_price(client_input)
+                    get_completed_total_price()
                     print(client_input)
             except SyntaxError:
                 print('syntax error')

@@ -4,9 +4,9 @@ from Class import Delivery
 class Driver:
     def __init__(self, name):
         self.name = name
-        self.current_region = [random.randint(0,15),random.randint(0,15)]
+        self.current_region = [random.randint(0,26),random.randint(0,26)]
         self.delivery = None
-
+        self.credit = 0
     def get_driver_info(self):
         return self.name
 
@@ -21,3 +21,8 @@ class Driver:
 
     def pick_order(self, delivery : Delivery):
         self.delivery = delivery
+
+    # money
+    def earn_credit(self, credit):
+        self.credit += credit
+        print(self.name+"'s current credit -> "+ str(self.credit))

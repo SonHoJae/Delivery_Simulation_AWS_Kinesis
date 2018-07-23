@@ -7,12 +7,11 @@ from Class import Delivery
 from boto import kinesis
 from pymongo import MongoClient
 from itertools import cycle
+import numpy as np
 
 kinesis = kinesis.connect_to_region('ap-northeast-1')
 
 shard_hash_key = []
-for _ in range(20):
-    print(kinesis.describe_stream('DeliveryStream'))
 print('checking')
 for shard in kinesis.describe_stream('DeliveryStream')['StreamDescription']['Shards']:
     shard_hash_key.append(shard['HashKeyRange']['StartingHashKey'])
@@ -30,17 +29,17 @@ database_collection = database_collection()
 i = 1
 while True:
     a = datetime.datetime.now()
-    ship_from_region = [random.randint(0,20),random.randint(0,20)]
-    ship_to_region =[random.randint(0,20),random.randint(0,20)]
+    ship_from_region = [random.randint(0,26),random.randint(0,26)]
+    ship_to_region =[random.randint(0,26),random.randint(0,26)]
     while ship_from_region == ship_to_region:
-        ship_to_region =[random.randint(0,20),random.randint(0,20)]
+        ship_to_region =[random.randint(0,26),random.randint(0,26)]
     order_created = {
         "order_id" : i,
         "ship_from_region_x" : ship_from_region[0],
         "ship_from_region_y": ship_from_region[1],
         "ship_to_region_x": ship_to_region[0],
         "ship_to_region_y": ship_to_region[1],
-        "pick_up_time" : str(datetime.datetime.now()),
+        "pick_up_time" : str(datetime.datetime.now() + datetime.timedelta(np.random.normal(13, 5, 1)[0])),
         "price" : (abs(ship_from_region[0] - ship_to_region[0]) + abs(ship_from_region[1] - ship_to_region[1])) * 1000,
         "status" : 0,
         "order_created_time" : str(datetime.datetime.now())

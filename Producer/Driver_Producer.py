@@ -42,9 +42,28 @@ def searching_a_delivery(driver):
             ],
         })
 
+    # If there is an order, driver take some rest and check out the time again.
+    documents = list(cursor)
+    i = 0
+    while len(documents) == 0:
+        print(driver.get_driver_info()+ 'in '+str(driver.getX())+','+str(driver.getY())
+              + ' is taking some rest and looking up orders again')
+        time.sleep(5)
+        cursor = delivery_collection.find(
+            {"$and":
+                [
+                    {"ship_from_region_x": {"$gte": driver.getX() - 3, "$lte": driver.getX() + 3}},
+                    {"ship_from_region_y": {"$gte": driver.getY() - 3, "$lte": driver.getY() + 3}},
+                    {"status": 0}
+                ],
+            })
+        documents = list(cursor)
+        i+= 1
+        if i > 5:
+            print('Hey, '+driver.get_driver_info()+' couldn\'t find good delivery for long time. Get him another options!')
 
     current_order_options = []
-    for order_created in cursor:
+    for order_created in documents:
         current_order_options.append(order_created)
 
     available_orders = sorted(current_order_options, key=lambda order: order['price'], reverse=True)
@@ -54,11 +73,15 @@ def searching_a_delivery(driver):
         #print('- Preference Order - \n' + str(preference_order))
     else:
         preference_order = None
+
+    print(driver.get_driver_info()+ " From region location ->" +
+          str(preference_order['ship_from_region_x'])+','+str(preference_order['ship_from_region_y']))
+
+    print(driver.get_driver_info()+ " location ->" +str(driver.getX())+','+str(driver.getY()))
     return preference_order
 
 # TODO If the status is updated to "ASSIGNED : 1", the driver should look up another possible delivery
 def pick_up_delivery(driver):
-
     preference_order = searching_a_delivery(driver)
     if preference_order != None:
         order_assigned = {
@@ -105,16 +128,17 @@ def pick_up_delivery(driver):
 
 # TODO : Do deliver and generate complete event to stream
 def do_deliver(driver):
-    print(driver.get_driver_info()+' delivery started')
     delivery = driver.get_delivery().get_delivery_info()
     distance = abs(delivery['ship_from_region'][0] - delivery['ship_to_region'][0])\
                + abs(delivery['ship_from_region'][1] + delivery['ship_to_region'][1])
-    print('distance ' + str(distance))
-    # after arriving at ship_to_region it will occur complete event
+    print(driver.get_driver_info()+' delivery started with order_id : '+ str(delivery['order_id']) + ' and distance ' + str(distance))
 
+
+    print()
+    # after arriving at ship_to_region it will occur complete event
     time.sleep(int(distance/10))
 
-    print(str(delivery['order_id'])+' deliver finished')
+    print(driver.get_driver_info() + ' delivery finished with order_id : ' + str(delivery['order_id']))
 
     order_completed = {
         'order_id' : delivery['order_id']
@@ -124,12 +148,15 @@ def do_deliver(driver):
         {"order_id": delivery['order_id']},
         {"$set":
              {"status": 2,
-                   "order_assigned_time": datetime.now()
+                   "order_completed_time": datetime.now()
              }
          }
     )
-
     kinesis.put_record('DeliveryStream', json.dumps(order_completed), str(order_completed['order_id']),explicit_hash_key=next(cycle_partition_key))
+
+    # now this thread(driver) will take some rest and work again.
+    driver.earn_credit(distance) # he earn credit corresponding to running distance
+    pick_up_delivery(driver)
 
 if __name__ == "__main__":
 
