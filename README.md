@@ -95,3 +95,9 @@ I realized I can resolve these bottleneck if I can control shard by explicitly c
 2. [Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client.describe_stream_summary)
 3. [Resharding](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-strategies.html)
 4. [Explicit Hash key](https://stackoverflow.com/questions/46634357/how-to-write-data-to-a-specific-shard-in-kinesis)
+
+
+#### Test Environment
+Python 3.6.0
+Windows 10
+Memory 12GB / CPU i5-6600
