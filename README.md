@@ -40,6 +40,7 @@
 #### 2. Producer
 > Event is randomly generated
 > Main_Producer.py -> order_created event generated
+![Alt text](https://imgur.com/o9mrwOc "Driver_Producer")
 > Driver_Producer.py -> there are 10 threads(drivers) is finding orders. if an order doesn't satisfy driver's
 condition, the driver is going to take a rest and search it again. Once the order is assigned to a driver,
 order_assigned event will be generated. after completing order, order_completed event is generated and update
@@ -87,7 +88,6 @@ I realized I can resolve these bottleneck if I can control shard by explicitly c
 #### Reference
 
 1. [API Explanation](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html)
-2. [Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client
-.describe_stream_summary)
+2. [Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client.describe_stream_summary)
 3. [Resharding](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-strategies.html)
 4. [Explicit Hash key](https://stackoverflow.com/questions/46634357/how-to-write-data-to-a-specific-shard-in-kinesis)
