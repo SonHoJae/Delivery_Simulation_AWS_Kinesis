@@ -17,6 +17,7 @@
 > ##### Partition key : determine which shard is going to be used
 
 #### Retention Period
+> ##### 24 Hours by default upto 168 hours
 #### Consumer
 > ##### GET records from stream and PROCESS
 
@@ -24,6 +25,7 @@
 
 ## Delivery_Simulation
 ### Kinesis
+![Alt text](https://i.imgur.com/wiMuZTF.jpg "Overview")
 
 #### 0. Instructions
 > 1. Install [bogo](http://boto.cloudhackers.com/en/latest/ref/kinesis.html) & [aws cli](https://aws.amazon.com/ko/cli/)
@@ -83,11 +85,9 @@ I realized I can resolve these bottleneck if I can control shard by explicitly c
 
 
 #### Reference
-> 1.[API Explanation](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html)
 
-> 2.[Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client
+1. [API Explanation](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html)
+2. [Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client
 .describe_stream_summary)
-
-> 3.[Resharding](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-strategies.html)
-
-> 4.[Explicit Hash key](https://stackoverflow.com/questions/46634357/how-to-write-data-to-a-specific-shard-in-kinesis)
+3. [Resharding](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-strategies.html)
+4. [Explicit Hash key](https://stackoverflow.com/questions/46634357/how-to-write-data-to-a-specific-shard-in-kinesis)
