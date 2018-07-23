@@ -41,7 +41,7 @@
 > Event is randomly generated
 > Main_Producer.py -> order_created event generated
 
-![Driver_Producer](https://imgur.com/HPJ0V0W "Driver_Producer")
+![Driver_Producer](https://i.imgur.com/o9mrwOc.png "Driver_Producer")
 
 > Driver_Producer.py -> there are 10 threads(drivers) is finding orders. if an order doesn't satisfy driver's
 condition, the driver is going to take a rest and search it again. Once the order is assigned to a driver,
