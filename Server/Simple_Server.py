@@ -5,9 +5,8 @@ import json
 import ast
 from collections import OrderedDict
 from threading import Thread
-
+import datetime
 from pymongo import MongoClient
-
 
 def database_collection():
     client = MongoClient()
@@ -46,7 +45,17 @@ def start_server():
             traceback.print_exc()
 
     soc.close()
+def receive_input(connection, max_buffer_size):
+    client_input = connection.recv(max_buffer_size)
+    client_input_size = sys.getsizeof(client_input)
 
+    if client_input_size > max_buffer_size:
+        print("The input size is greater than expected {}".format(client_input_size))
+
+    result = client_input.decode("utf8").rstrip()  # decode and strip end of line
+    return result
+
+''' Receiving events from consumers through socket '''
 def client_thread(connection, ip, port, max_buffer_size = 5120):
     is_active = True
 
@@ -59,34 +68,23 @@ def client_thread(connection, ip, port, max_buffer_size = 5120):
             print("Connection " + ip + ":" + port + " closed")
             is_active = False
         else:
-            try:
-                client_input = ast.literal_eval(client_input)
-                # order_created
-                if  9 == len(client_input):
-                    insertToRankingMemory(client_input)
-                    get_created_total_price(client_input)
-                    connection.sendall("-".encode("utf8"))
-                # order_assigned
-                elif 3 == len(client_input):
-                    print(client_input)
-                # order_completed
-                else:
-                    get_completed_total_price()
-                    print(client_input)
-            except SyntaxError:
-                print('syntax error')
-                pass
+            client_input = ast.literal_eval(client_input)
+            # order_created
+            if  9 == len(client_input):
+                order_created_and_get_rank(client_input)
+                get_created_total_price(client_input)
+                connection.sendall("-".encode("utf8"))
+            # order_assigned
+            elif 2 == len(client_input):
+                get_avg_response_time()
+            # order_completed
+            else: # 1 == len(client_input)
+                get_completed_total_price()
+                get_avg_completion_time()
+                print(client_input)
 
-def receive_input(connection, max_buffer_size):
-    client_input = connection.recv(max_buffer_size)
-    client_input_size = sys.getsizeof(client_input)
 
-    if client_input_size > max_buffer_size:
-        print("The input size is greater than expected {}".format(client_input_size))
-
-    result = client_input.decode("utf8").rstrip()  # decode and strip end of line
-    return result
-
+''' Problem 1 Functions '''
 # Rank from ship_from_region for 10 minutes and previous data go to database
 # For tackling streaming data, all the data should be processed on memory
 # MongoDB query runs on memory, but memory architecture is ~~
@@ -114,7 +112,7 @@ def ranking_sort(updated_order):
     #         for key, value in top_10_region.items():
     #             if value < new_value:
 
-def insertToRankingMemory(data):
+def order_created_and_get_rank(data):
     global top_10_region
 
     region = str(data['ship_from_region_x'])+','+str(data['ship_from_region_y'])
@@ -124,11 +122,12 @@ def insertToRankingMemory(data):
         order_created[region] = 1
     ranking_sort({region: order_created[region]})
 
+''' Problem 2 Functions '''
 def get_created_total_price(data):
     global total_created_price
     price = data['price']
     total_created_price += price
-    print("created price " + str(total_created_price))
+    # print("created price " + str(total_created_price))
 
 def get_completed_total_price():
     global total_completed_price
@@ -137,12 +136,42 @@ def get_completed_total_price():
         total_completed_price += document['price']
     print("completed price " + str(total_completed_price))
 
+''' Problem 3 Functions '''
+def get_avg_completion_time():
+    cursor = delivery_collection.find({"order_completed_time": {"$exists": True}})
+    documents = list(cursor)
+    total = 0
+    count = len(documents)
+    for document in documents:
+        dt_response_time = datetime.datetime.strptime(document['order_completed_time'],"%Y-%m-%d %H:%M:%S.%f")\
+                           - datetime.datetime.strptime(document['order_created_time'],"%Y-%m-%d %H:%M:%S.%f")
+        total += divmod(dt_response_time.total_seconds(), 60)[1]
+    try:
+        print('Average completion time -> '+ str(total/count))
+    except ZeroDivisionError:
+        print('No completion data')
+
+def get_avg_response_time():
+    cursor = delivery_collection.find({"order_assigned_time": {"$exists": True}})
+    documents = list(cursor)
+    total = 0
+    count = len(documents)
+    for document in documents:
+        dt_response_time = datetime.datetime.strptime(document['order_assigned_time'],"%Y-%m-%d %H:%M:%S.%f")\
+                           - datetime.datetime.strptime(document['order_created_time'],"%Y-%m-%d %H:%M:%S.%f")
+        total += divmod(dt_response_time.total_seconds(), 60)[1]
+    try:
+        print('Average response time -> ' + str(total / count))
+    except ZeroDivisionError:
+        print('No response data')
 
 delivery_collection = database_collection()
 delivery_collection.drop()
 client_socket = None
+
 order_created = {}
 top_10_region = OrderedDict()
+
 total_created_price = 0
 total_completed_price = 0
 

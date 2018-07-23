@@ -28,11 +28,12 @@ database_collection = database_collection()
 # create orders
 i = 1
 while True:
-    a = datetime.datetime.now()
     ship_from_region = [random.randint(0,26),random.randint(0,26)]
     ship_to_region =[random.randint(0,26),random.randint(0,26)]
+
     while ship_from_region == ship_to_region:
         ship_to_region =[random.randint(0,26),random.randint(0,26)]
+
     order_created = {
         "order_id" : i,
         "ship_from_region_x" : ship_from_region[0],
@@ -44,12 +45,8 @@ while True:
         "status" : 0,
         "order_created_time" : str(datetime.datetime.now())
     }
+    print(json.dumps(order_created))
     kinesis.put_record('DeliveryStream', json.dumps(order_created), str(order_created['price']),
                        explicit_hash_key=next(cycle_partition_key))
     database_collection.insert(order_created)
-
-    time.sleep(0.09)
-    b = datetime.datetime.now()
-    c = b - a
-    #print(divmod(c.total_seconds(), 60))
     i+=1

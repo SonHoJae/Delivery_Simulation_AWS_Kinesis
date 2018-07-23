@@ -7,7 +7,6 @@ class DeliveryStatus(Enum):
     ORDER_ASSIGNED = 1
     ORDER_COMPLETED = 2
 
-
 class Delivery:
     def __init__(self, order_id, ship_from_region, ship_to_region, pick_up_time, price, created_time):
         self.order_id = order_id

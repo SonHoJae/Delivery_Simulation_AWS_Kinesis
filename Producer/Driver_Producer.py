@@ -74,10 +74,10 @@ def searching_a_delivery(driver):
     else:
         preference_order = None
 
-    print(driver.get_driver_info()+ " From region location ->" +
-          str(preference_order['ship_from_region_x'])+','+str(preference_order['ship_from_region_y']))
+    print(driver.get_driver_info()+ " source location ->" +
+          str(preference_order['ship_from_region_x'])+','+str(preference_order['ship_from_region_y']), end=' *** ')
 
-    print(driver.get_driver_info()+ " location ->" +str(driver.getX())+','+str(driver.getY()))
+    print(driver.get_driver_info()+ " destination location ->" +str(driver.getX())+','+str(driver.getY()))
     return preference_order
 
 # TODO If the status is updated to "ASSIGNED : 1", the driver should look up another possible delivery
@@ -105,7 +105,7 @@ def pick_up_delivery(driver):
             {"order_id": preference_order['order_id']},
             {"$set": {"status": 1,
                       "driver": order_assigned['driver'],
-                      "order_assigned_time": datetime.now()
+                      "order_assigned_time": str(datetime.now())
                       }
              }
         )
@@ -114,7 +114,7 @@ def pick_up_delivery(driver):
         # Release !
 
         if order_assigned != None:
-            print(order_assigned['driver']+'order assgined')
+            print(order_assigned['driver']+' order assgined')
 
             # Lock query and update
 
@@ -131,12 +131,10 @@ def do_deliver(driver):
     delivery = driver.get_delivery().get_delivery_info()
     distance = abs(delivery['ship_from_region'][0] - delivery['ship_to_region'][0])\
                + abs(delivery['ship_from_region'][1] + delivery['ship_to_region'][1])
-    print(driver.get_driver_info()+' delivery started with order_id : '+ str(delivery['order_id']) + ' and distance ' + str(distance))
+    print(driver.get_driver_info()+' delivery started with order_id : '+ str(delivery['order_id']) + ' and distance ' + str(distance)+'\n\n')
 
-
-    print()
     # after arriving at ship_to_region it will occur complete event
-    time.sleep(int(distance/10))
+    time.sleep(distance)
 
     print(driver.get_driver_info() + ' delivery finished with order_id : ' + str(delivery['order_id']))
 
@@ -148,14 +146,16 @@ def do_deliver(driver):
         {"order_id": delivery['order_id']},
         {"$set":
              {"status": 2,
-                   "order_completed_time": datetime.now()
+                   "order_completed_time": str(datetime.now())
              }
          }
     )
     kinesis.put_record('DeliveryStream', json.dumps(order_completed), str(order_completed['order_id']),explicit_hash_key=next(cycle_partition_key))
 
-    # now this thread(driver) will take some rest and work again.
     driver.earn_credit(distance) # he earn credit corresponding to running distance
+    print('Now this thread('+ driver.get_driver_info()+ ') will take some rest and work again.')
+    time.sleep(10)
+
     pick_up_delivery(driver)
 
 if __name__ == "__main__":

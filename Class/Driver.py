@@ -7,6 +7,7 @@ class Driver:
         self.current_region = [random.randint(0,26),random.randint(0,26)]
         self.delivery = None
         self.credit = 0
+
     def get_driver_info(self):
         return self.name
 
