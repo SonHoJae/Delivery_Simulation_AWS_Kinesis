@@ -3,7 +3,7 @@ from Class import Delivery
 from pymongo import MongoClient
 import json
 import time
-from datetime import datetime
+import datetime
 from boto import kinesis
 from threading import Thread
 import traceback
@@ -57,12 +57,17 @@ def searching_a_delivery(driver):
                     {"status": 0}
                 ],
             })
+
         documents = list(cursor)
         i+= 1
         if i > 5:
             print('Hey, '+driver.get_driver_info()+' couldn\'t find good delivery for long time. Get him another options!')
 
     current_order_options = []
+    #
+    # # filter pickup time - distance < 0
+    # pickup - datetime.datetime.now() -
+
     for order_created in documents:
         current_order_options.append(order_created)
 
@@ -105,7 +110,7 @@ def pick_up_delivery(driver):
             {"order_id": preference_order['order_id']},
             {"$set": {"status": 1,
                       "driver": order_assigned['driver'],
-                      "order_assigned_time": str(datetime.now())
+                      "order_assigned_time": str(datetime.datetime.now())
                       }
              }
         )
@@ -129,12 +134,15 @@ def pick_up_delivery(driver):
 # TODO : Do deliver and generate complete event to stream
 def do_deliver(driver):
     delivery = driver.get_delivery().get_delivery_info()
-    distance = abs(delivery['ship_from_region'][0] - delivery['ship_to_region'][0])\
+
+    current_to_source = abs(driver.getX() - delivery['ship_from_region'][0]) \
+                        + abs(driver.getY() - delivery['ship_from_region'][1])
+    delivery_distance = abs(delivery['ship_from_region'][0] - delivery['ship_to_region'][0])\
                + abs(delivery['ship_from_region'][1] + delivery['ship_to_region'][1])
-    print(driver.get_driver_info()+' delivery started with order_id : '+ str(delivery['order_id']) + ' and distance ' + str(distance)+'\n\n')
+    print(driver.get_driver_info()+' delivery started with order_id : '+ str(delivery['order_id']) + ' and distance ' + str(delivery_distance)+'\n\n')
 
     # after arriving at ship_to_region it will occur complete event
-    time.sleep(distance)
+    time.sleep(current_to_source + delivery_distance)
 
     print(driver.get_driver_info() + ' delivery finished with order_id : ' + str(delivery['order_id']))
 
@@ -146,13 +154,14 @@ def do_deliver(driver):
         {"order_id": delivery['order_id']},
         {"$set":
              {"status": 2,
-                   "order_completed_time": str(datetime.now())
+                   "order_completed_time": str(datetime.datetime.now())
              }
          }
     )
     kinesis.put_record('DeliveryStream', json.dumps(order_completed), str(order_completed['order_id']),explicit_hash_key=next(cycle_partition_key))
 
-    driver.earn_credit(distance) # he earn credit corresponding to running distance
+    driver.earn_credit(delivery_distance) # he earn credit corresponding to running distance
+    driver.update_location(delivery['ship_to_region'][0],delivery['ship_to_region'][1])
     print('Now this thread('+ driver.get_driver_info()+ ') will take some rest and work again.')
     time.sleep(10)
 

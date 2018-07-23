@@ -23,6 +23,9 @@ class Driver:
     def pick_order(self, delivery : Delivery):
         self.delivery = delivery
 
+    def update_location(self,x,y):
+        self.current_region = [x,y]
+
     # money
     def earn_credit(self, credit):
         self.credit += credit

@@ -175,6 +175,11 @@ top_10_region = OrderedDict()
 total_created_price = 0
 total_completed_price = 0
 
+# TODO 1. Optimize algorithm on memory
+# TODO 2. Reflect driver's current location
+# TODO 3. Consider pickup time constraint
+# TODO 4. Documentation
+
 if __name__ == "__main__":
     start_server()
 
