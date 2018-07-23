@@ -79,9 +79,12 @@ def client_thread(connection, ip, port, max_buffer_size = 5120):
                 get_avg_response_time()
             # order_completed
             else: # 1 == len(client_input)
+                print(top_10_region[:10])
                 get_completed_total_price()
                 get_avg_completion_time()
-                print(client_input)
+                print("total created price -> "+ str(total_created_price) + '\n'
+                      +"total completed price ->" + str(total_completed_price))
+
 
 
 ''' Problem 1 Functions '''
@@ -95,10 +98,8 @@ def ranking_sort(updated_order):
 
     new_key, new_value = None, None
     for k,v in updated_order.items():
-        new_key, new_value = k, v
-    top_10_region[k] = v
-    a = sorted(list(top_10_region.items()), key=lambda x: x[1], reverse=True)
-    # print(a[:10])
+        dict_region_count[k] = v
+    top_10_region = sorted(list(dict_region_count.items()), key=lambda x: x[1], reverse=True)
     #TODO : IMPORVE SORTING ALGORITHM
     #
     # if len(top_10_region) == 0:
@@ -113,10 +114,10 @@ def ranking_sort(updated_order):
     #             if value < new_value:
 
 def order_created_and_get_rank(data):
-    global top_10_region
+    global dict_region_count
 
     region = str(data['ship_from_region_x'])+','+str(data['ship_from_region_y'])
-    if region in top_10_region:
+    if region in dict_region_count:
         order_created[region] += 1
     else:
         order_created[region] = 1
@@ -134,7 +135,6 @@ def get_completed_total_price():
     cursor = delivery_collection.find({'status':2})
     for document in list(cursor):
         total_completed_price += document['price']
-    print("completed price " + str(total_completed_price))
 
 ''' Problem 3 Functions '''
 def get_avg_completion_time():
@@ -143,9 +143,9 @@ def get_avg_completion_time():
     total = 0
     count = len(documents)
     for document in documents:
-        dt_response_time = datetime.datetime.strptime(document['order_completed_time'],"%Y-%m-%d %H:%M:%S.%f")\
+        dt_complete_time = datetime.datetime.strptime(document['order_completed_time'],"%Y-%m-%d %H:%M:%S.%f")\
                            - datetime.datetime.strptime(document['order_created_time'],"%Y-%m-%d %H:%M:%S.%f")
-        total += divmod(dt_response_time.total_seconds(), 60)[1]
+        total += dt_complete_time.total_seconds()
     try:
         print('Average completion time -> '+ str(total/count))
     except ZeroDivisionError:
@@ -159,7 +159,7 @@ def get_avg_response_time():
     for document in documents:
         dt_response_time = datetime.datetime.strptime(document['order_assigned_time'],"%Y-%m-%d %H:%M:%S.%f")\
                            - datetime.datetime.strptime(document['order_created_time'],"%Y-%m-%d %H:%M:%S.%f")
-        total += divmod(dt_response_time.total_seconds(), 60)[1]
+        total += dt_response_time.total_seconds()
     try:
         print('Average response time -> ' + str(total / count))
     except ZeroDivisionError:
@@ -170,8 +170,8 @@ delivery_collection.drop()
 client_socket = None
 
 order_created = {}
-top_10_region = OrderedDict()
-
+top_10_region = []
+dict_region_count = OrderedDict()
 total_created_price = 0
 total_completed_price = 0
 

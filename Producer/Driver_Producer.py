@@ -46,7 +46,7 @@ def searching_a_delivery(driver):
     documents = list(cursor)
     i = 0
     while len(documents) == 0:
-        print(driver.get_driver_info()+ 'in '+str(driver.getX())+','+str(driver.getY())
+        print(driver.get_driver_info()+ ' in '+str(driver.getX())+','+str(driver.getY())
               + ' is taking some rest and looking up orders again')
         time.sleep(5)
         cursor = delivery_collection.find(
@@ -81,7 +81,7 @@ def searching_a_delivery(driver):
         estimate_time = datetime.datetime.strptime(order['pick_up_time'], "%Y-%m-%d %H:%M:%S.%f")  \
                         - datetime.datetime.now() + datetime.timedelta(0,3) # 3 is spare time
         delivery_time = current_to_source + delivery_distance
-        estimate_time = divmod(estimate_time.total_seconds(), 60)[1]
+        estimate_time = estimate_time.total_seconds()
         # print('delivery time -> '+str(delivery_time))
         # print('left time ->' + str(estimate_time))
         if delivery_time < estimate_time:
@@ -89,19 +89,23 @@ def searching_a_delivery(driver):
         return False
 
     available_orders = list(filter(filter_unreachable_region, available_orders))
-    print('after ' +str(len(available_orders)))
+    print('after ' + str(len(available_orders)))
+    print(str(len(available_orders)-len(available_orders))
+          +' regions filtered due to unreachable locations within pick-up time')
 
     if available_orders:
         #print('- Available Orders - \n' + str(available_orders))
         preference_order = available_orders[0]
         #print('- Preference Order - \n' + str(preference_order))
+        print(driver.get_driver_info() + " location ->" + str(driver.getX()) + ',' + str(driver.getY()),end=' *** ')
+        print(driver.get_driver_info() + " source location ->" +
+              str(preference_order['ship_from_region_x']) + ',' + str(preference_order['ship_from_region_y']))
     else:
         preference_order = None
 
-    print(driver.get_driver_info()+ " source location ->" +
-          str(preference_order['ship_from_region_x'])+','+str(preference_order['ship_from_region_y']), end=' *** ')
 
-    print(driver.get_driver_info()+ " destination location ->" +str(driver.getX())+','+str(driver.getY()))
+
+
     return preference_order
 
 # TODO If the status is updated to "ASSIGNED : 1", the driver should look up another possible delivery
@@ -133,6 +137,7 @@ def pick_up_delivery(driver):
                       }
              }
         )
+        print('assigned '+ driver.get_driver_info()+' '+str(datetime.datetime.now()))
 
         driver.pick_order(delivery)
         # Release !
@@ -161,18 +166,20 @@ def do_deliver(driver):
     print(driver.get_driver_info()+' delivery started with order_id : '+ str(delivery['order_id']) + ' and distance ' + str(delivery_distance)+'\n\n')
 
     # after arriving at ship_to_region it will occur complete event
-    time.sleep(current_to_source + delivery_distance)
-
+    print(current_to_source + delivery_distance)
+    time.sleep(int(current_to_source + delivery_distance))
+    time.sleep(3)
     print(driver.get_driver_info() + ' delivery finished with order_id : ' + str(delivery['order_id']))
 
     order_completed = {
         'order_id' : delivery['order_id']
     }
 
+    print('completion '+ driver.get_driver_info()+' '+str(datetime.datetime.now()))
     delivery_collection.update(
         {"order_id": delivery['order_id']},
         {"$set":
-             {"status": 2,
+             {      "status": 2,
                    "order_completed_time": str(datetime.datetime.now())
              }
          }
