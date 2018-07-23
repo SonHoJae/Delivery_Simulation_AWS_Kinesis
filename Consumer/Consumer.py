@@ -50,7 +50,6 @@ while True:
             print(count, data)
         except ValueError:
             pass
-
         count += 1
         #  every time
         client_socket.sendall(str(data).encode("utf8"))
