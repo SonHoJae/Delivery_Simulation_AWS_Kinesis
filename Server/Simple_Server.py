@@ -93,14 +93,17 @@ def client_thread(connection, ip, port, max_buffer_size = 5120):
 
 def print_top10_ranking():
     print('****************************** TOP 10 From regions ************************************')
+    idx = 0
     if len(dict_region_count) < 10:
-        for idx, i in enumerate(range(len(dict_region_count), 0, -1)):
+        for i in range(len(dict_region_count), 0, -1):
             if len(dict_region_count[i]) != 0:
-                print('Top ' + str(idx + 1) + ' ' + str(dict_region_count[i]) + ' ' + str(i) + ' counted')
+                print('Top [' + str(i) + ' counted ] '+str(idx + 1) + ' ' + str(dict_region_count[i]))
+                idx += 1
     else:
-        for idx, i in enumerate(range(len(dict_region_count), len(dict_region_count) - 10, -1)):
+        for i in range(len(dict_region_count), len(dict_region_count) - 10, -1):
             if len(dict_region_count[i]) != 0:
-                print('Top ' + str(idx + 1) + ' ' + str(dict_region_count[i]) + ' ' + str(i) + ' counted')
+                print('Top [' + str(i) + ' counted ] ' + str(idx + 1) + ' ' + str(dict_region_count[i]))
+                idx += 1
     print('****************************************************************************************')
 
 def order_created_and_get_rank(data):

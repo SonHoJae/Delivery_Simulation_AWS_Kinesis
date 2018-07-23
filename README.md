@@ -31,7 +31,7 @@
 > 3. aws kinesis create-stream --stream-name=DeliveryStream --shard-count=[count]
 > 4. aws kinesis describe-stream --stream-name=DeliveryStream
 #### 1. Hypothesis
-There are [30x30] dimension map and 10 drivers on the map.
+> There are [30x30] dimension map and 10 drivers on the map.
 > A driver is looking for an order under condition that takes consideration of pick_up_time & distance
 > taking time [driver_location to delivey_src] + [delivery_src to delivery_dst] < pick_up_time
 > delivery_src should be within [3x3] from the driver
@@ -72,7 +72,6 @@ shards. so I created 7 shards to accept data without missing them
 > 1. I needed to make a decision over storage for the result.
 > Since I have to tackle real-time streaming, I should avoid disk operation with database
 > With Mongodb I can store and query data on memory there was no issue.
-
 > For top-10 result  'Online Sorting' has better performance.
 
 > 2. Working with Shards, I found there are data missing over the pipeline. this is because data transmitted
@@ -85,7 +84,10 @@ I realized I can resolve these bottleneck if I can control shard by explicitly c
 
 #### Reference
 > 1.[API Explanation](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html)
+
 > 2.[Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client
 .describe_stream_summary)
+
 > 3.[Resharding](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-strategies.html)
+
 > 4.[Explicit Hash key](https://stackoverflow.com/questions/46634357/how-to-write-data-to-a-specific-shard-in-kinesis)
