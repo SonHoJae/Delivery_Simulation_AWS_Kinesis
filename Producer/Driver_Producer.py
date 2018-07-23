@@ -70,8 +70,27 @@ def searching_a_delivery(driver):
 
     for order_created in documents:
         current_order_options.append(order_created)
-
     available_orders = sorted(current_order_options, key=lambda order: order['price'], reverse=True)
+
+    print('previous '+ str(len(available_orders)))
+    def filter_unreachable_region(order):
+        current_to_source = abs(driver.getX() - order['ship_from_region_x']) \
+                            + abs(driver.getY() - order['ship_from_region_y'])
+        delivery_distance = abs(order['ship_from_region_x'] - order['ship_to_region_x']) \
+                            + abs(order['ship_from_region_y'] + order['ship_to_region_y'])
+        estimate_time = datetime.datetime.strptime(order['pick_up_time'], "%Y-%m-%d %H:%M:%S.%f")  \
+                        - datetime.datetime.now() + datetime.timedelta(0,3) # 3 is spare time
+        delivery_time = current_to_source + delivery_distance
+        estimate_time = divmod(estimate_time.total_seconds(), 60)[1]
+        # print('delivery time -> '+str(delivery_time))
+        # print('left time ->' + str(estimate_time))
+        if delivery_time < estimate_time:
+            return True
+        return False
+
+    available_orders = list(filter(filter_unreachable_region, available_orders))
+    print('after ' +str(len(available_orders)))
+
     if available_orders:
         #print('- Available Orders - \n' + str(available_orders))
         preference_order = available_orders[0]
