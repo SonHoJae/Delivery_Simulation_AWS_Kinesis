@@ -6,6 +6,15 @@ import ast
 from collections import OrderedDict
 from threading import Thread
 
+from pymongo import MongoClient
+
+
+def database_collection():
+    client = MongoClient()
+    db = client.delivery_database
+    delivery_collection = db.delivery_collection
+    print(db.collection_names())
+    return delivery_collection
 
 def start_server():
     host = "127.0.0.1"
@@ -51,18 +60,21 @@ def client_thread(connection, ip, port, max_buffer_size = 5120):
             is_active = False
         else:
             try:
-                json_length = len(ast.literal_eval(client_input))
-                if  9 == json_length:
-                    pass
-                    # insertToRankingMemory(client_input)
-                    # insertToTotalPriceMemory(client_input)
-                    # connection.sendall("-".encode("utf8"))
-                    # print(client_input)
-                elif 3 == json_length:
+                client_input = ast.literal_eval(client_input)
+                # order_created
+                if  9 == len(client_input):
+                    insertToRankingMemory(client_input)
+                    get_created_total_price(client_input)
+                    connection.sendall("-".encode("utf8"))
+                # order_assigned
+                elif 3 == len(client_input):
                     print(client_input)
+                # order_completed
                 else:
+                    get_completed_total_price(client_input)
                     print(client_input)
             except SyntaxError:
+                print('syntax error')
                 pass
 
 def receive_input(connection, max_buffer_size):
@@ -88,8 +100,7 @@ def ranking_sort(updated_order):
         new_key, new_value = k, v
     top_10_region[k] = v
     a = sorted(list(top_10_region.items()), key=lambda x: x[1], reverse=True)
-    print('len of list ' + str(len(a)))
-    print(a[:10])
+    # print(a[:10])
     #TODO : IMPORVE SORTING ALGORITHM
     #
     # if len(top_10_region) == 0:
@@ -105,6 +116,7 @@ def ranking_sort(updated_order):
 
 def insertToRankingMemory(data):
     global top_10_region
+
     region = str(data['ship_from_region_x'])+','+str(data['ship_from_region_y'])
     if region in top_10_region:
         order_created[region] += 1
@@ -112,16 +124,28 @@ def insertToRankingMemory(data):
         order_created[region] = 1
     ranking_sort({region: order_created[region]})
 
-def insertToTotalPriceMemory(data):
+def get_created_total_price(data):
     global total_created_price
     price = data['price']
     total_created_price += price
-    print(price, total_created_price)
+    print("created price " + str(total_created_price))
 
+def get_completed_total_price():
+    global total_completed_price
+    cursor = delivery_collection.find({'status':2})
+    for document in list(cursor):
+        total_completed_price += document['price']
+    print("completed price " + str(total_completed_price))
+
+
+delivery_collection = database_collection()
+delivery_collection.drop()
 client_socket = None
 order_created = {}
 top_10_region = OrderedDict()
 total_created_price = 0
+total_completed_price = 0
+
 if __name__ == "__main__":
     start_server()
 

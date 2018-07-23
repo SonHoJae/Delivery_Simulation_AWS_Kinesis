@@ -16,10 +16,8 @@ for _ in range(20):
 print('checking')
 for shard in kinesis.describe_stream('DeliveryStream')['StreamDescription']['Shards']:
     shard_hash_key.append(shard['HashKeyRange']['StartingHashKey'])
-print("starting hashkey"+str(shard_hash_key))
-print(shard_hash_key[:10])
-print(len(shard_hash_key[:10]))
-cycle_partition_key = cycle(shard_hash_key[:10])
+
+cycle_partition_key = cycle(shard_hash_key)
 
 def database_collection():
     client = MongoClient()

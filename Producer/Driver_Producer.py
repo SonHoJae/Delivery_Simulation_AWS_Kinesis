@@ -6,19 +6,17 @@ import time
 from datetime import datetime
 from boto import kinesis
 from threading import Thread
-import threading
 import traceback
 from itertools import cycle
-
+import random
 kinesis = kinesis.connect_to_region('ap-northeast-1')
 
 shard_hash_key = []
 for shard in kinesis.describe_stream('DeliveryStream')['StreamDescription']['Shards']:
     shard_hash_key.append(shard['HashKeyRange']['StartingHashKey'])
-#print("starting hashkey"+str(shard_hash_key))
-print(shard_hash_key[10:])
-print(len(shard_hash_key[10:]))
-cycle_partition_key = cycle(shard_hash_key[13:])
+
+print(shard_hash_key)
+cycle_partition_key = cycle(shard_hash_key)
 
 def database_collection():
     client = MongoClient()
@@ -65,10 +63,10 @@ def pick_up_delivery(driver):
     if preference_order != None:
         order_assigned = {
             "order_id": preference_order['order_id'],
-            "driver": str(driver.get_driver_info()),
-            "order_assigned_time": str(datetime.now())
+            "driver": str(driver.get_driver_info())
         }
 
+        # If the status is updated to "ASSIGNED : 1", or "2" the driver should look up another possible delivery
         # Driver will take the order if availabe
         delivery = Delivery.Delivery(
                                           preference_order['order_id'],
@@ -79,12 +77,12 @@ def pick_up_delivery(driver):
                                           preference_order['order_created_time']
                                      )
 
-        delivery.assign_driver(driver, order_assigned['order_assigned_time'])
+        delivery.assign_driver(driver)
         delivery_collection.update(
             {"order_id": preference_order['order_id']},
             {"$set": {"status": 1,
                       "driver": order_assigned['driver'],
-                      "order_assigned_time": order_assigned['order_assigned_time']
+                      "order_assigned_time": datetime.now()
                       }
              }
         )
@@ -100,7 +98,6 @@ def pick_up_delivery(driver):
             kinesis.put_record('DeliveryStream', json.dumps(order_assigned), str(order_assigned['order_id']),explicit_hash_key=next(cycle_partition_key))
 
             do_deliver(driver)
-        time.sleep(0.1)
     else:
         order_assigned = None
 
@@ -114,7 +111,9 @@ def do_deliver(driver):
                + abs(delivery['ship_from_region'][1] + delivery['ship_to_region'][1])
     print('distance ' + str(distance))
     # after arriving at ship_to_region it will occur complete event
-    time.sleep(distance)
+
+    time.sleep(int(distance/10))
+
     print(str(delivery['order_id'])+' deliver finished')
 
     order_completed = {
@@ -123,10 +122,10 @@ def do_deliver(driver):
 
     delivery_collection.update(
         {"order_id": delivery['order_id']},
-        {"$set": {"status": 2,
-                  "driver": driver.get_driver_info(),
-                  "order_assigned_time": datetime.now()
-                  }
+        {"$set":
+             {"status": 2,
+                   "order_assigned_time": datetime.now()
+             }
          }
     )
 
@@ -138,7 +137,7 @@ if __name__ == "__main__":
     delivery_collection = database_collection()
 
     # Generate Drivers
-    drivers = create_drivers(5)
+    drivers = create_drivers(10)
 
     # TODO -> ASSUMING A SITUATION THAT DRIVER PIKCS A ORDER
     # **************  HYPOTHESIS  ***************
@@ -153,23 +152,15 @@ if __name__ == "__main__":
     # ㅁ ㅁ () ㅁ ㅁ
     # ㅁ ㅁ ㅁ ㅁ ㅁ
     # ㅁ ㅁ ㅁ ㅁ ㅁ
+
 # getting starting hash key for explicitly transmitting data
 
     # Now driver will pick up the order and the delivery will be taken to him
     # Here, Driver class do a role as next Producer of { order_assigned }
     for idx, _driver in enumerate(drivers):
         try:
-            print(idx)
-            pick_up_delivery(_driver)
-            #Thread(target=pick_up_delivery, args=(_driver, )).start()
+            Thread(target=pick_up_delivery, args=(_driver, )).start()
+            time.sleep(random.randint(1,9))
         except:
             print("Thread did not start.")
             traceback.print_exc()
-
-#
-# order_completed = {
-#     'order_id': 1
-# }
-#     # print(1)
-#     # time.sleep(1)
-# kinesis.put_record('DeliveryStream', json.dumps(order_completed), "d", explicit_hash_key="0")

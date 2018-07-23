@@ -37,7 +37,6 @@ class Delivery:
         self.status = status
         return status
 
-    def assign_driver(self, _driver: Driver, assigned_time):
+    def assign_driver(self, _driver: Driver):
         self.driver = _driver
-        self.assigned_time = assigned_time
         self.update_status(DeliveryStatus.ORDER_ASSIGNED)
