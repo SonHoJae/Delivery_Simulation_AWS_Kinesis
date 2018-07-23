@@ -23,21 +23,31 @@
 <hr/>
 
 ## Delivery_Simulation
-#### 0. Kinesis
-##### Instructions
+### Kinesis
+
+#### 0. Instructions
 > 1. Install [bogo](http://boto.cloudhackers.com/en/latest/ref/kinesis.html) & [aws cli](https://aws.amazon.com/ko/cli/)
 > 2. cmd > aws configure
-> 3. aws kinesis create-stream --stream-name=DeliveryStream --shard-count=1
+> 3. aws kinesis create-stream --stream-name=DeliveryStream --shard-count=[count]
 > 4. aws kinesis describe-stream --stream-name=DeliveryStream
-
-#### 1. Producer
+#### 1. Hypothesis
+There are [30x30] dimension map and 10 drivers on the map.
+A driver is looking for an order under condition that takes consideration of pick_up_time & distance
+> taking time [driver_location to delivey_src] + [delivery_src to delivery_dst] < pick_up_time
+> delivery_src should be within [3x3] from the driver
+#### 2. Producer
 > Event is randomly generated
-> Data stream capacity parameter
-#### 2. Consumer
+> Main_Producer.py -> order_created event generated
+> Driver_Producer.py -> there are 10 threads(drivers) is finding orders. if an order doesn't satisfy driver's
+condition, the driver is going to take a rest and search it again. Once the order is assigned to a driver,
+order_assigned event will be generated. after completing order, order_completed event is generated and update
+driver's location. Now the driver takes some rest(time.sleep), and search for a new order based on new location
+(previous destination)
+#### 3. Consumer
 > ship from regions
 > total amount of price that are in created orders, and that are in completed orders
 > average time completion time (from created to completed), average response time (from created to assigned)
-#### 3. Controlling shards(Split and Merge)
+#### 4. Controlling shards(Split and Merge)
 > CREATE aws kinesis create-stream --stream-name=DeliveryStream --shard-count=4
 > DESCRIBE aws kinesis describe-stream --stream-name=DeliveryStream
 > DELETE aws kinesis delete-stream --stream-name=DeliveryStream
@@ -60,7 +70,8 @@ when 10 drivers accept or complete order, the worst case 20 times events on a se
 
 
 #### Reference
-1.[API Explanation](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html)
-2.[Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client.describe_stream_summary)
-3.[Resharding](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-strategies.html)
-4.[Explicit Hash key](https://stackoverflow.com/questions/46634357/how-to-write-data-to-a-specific-shard-in-kinesis)
+> 1.[API Explanation](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStreamSummary.html)
+> 2.[Python API](https://boto3.readthedocs.io/en/latest/reference/services/kinesis.html#Kinesis.Client
+.describe_stream_summary)
+> 3.[Resharding](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-strategies.html)
+> 4.[Explicit Hash key](https://stackoverflow.com/questions/46634357/how-to-write-data-to-a-specific-shard-in-kinesis)
