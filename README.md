@@ -72,7 +72,7 @@ shards. so I created 7 shards to accept data without missing them
 > DELETE aws kinesis delete-stream --stream-name=DeliveryStream
 
 #### 6. Simulation Video
-[![Watch the video](https://i.imgur.com/mRAF72o.jpg)](https://vimeo.com/user87602558/review/281284344/893d615e04)
+[![Watch the video](https://i.imgur.com/mRAF72o.jpg)](https://vimeo.com/user87602558/review/281374079/a065c35302)
 <hr/>
 
 #### My issues
